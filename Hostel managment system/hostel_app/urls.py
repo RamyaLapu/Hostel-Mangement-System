@@ -1,0 +1,33 @@
+from django.urls import path
+from . import views
+
+urlpatterns = [
+    path('', views.home, name='home'),
+    path('register/', views.register, name='register'),
+    path('login/', views.user_login, name='login'),
+    path('forgot_password/', views.forgot_password, name='forgot_password'),
+    path('student_dashboard/', views.student_dashboard, name='student_dashboard'),
+    path('admin_dashboard/', views.admin_dashboard, name='admin_dashboard'),
+    path('logout/', views.user_logout, name='logout'),
+    path('change_password/', views.change_password, name='change_password'),
+    path('my_profile/', views.my_profile, name='my_profile'),
+    path('student_profile/<int:student_id>/', views.student_profile, name='student_profile'),
+    path('my_room/', views.my_room, name='my_room'),
+    path('book_hostel/', views.book_hostel, name='book_hostel'),
+    path('room_details/', views.room_details, name='room_details'),
+    path('manage_students/', views.manage_students, name='manage_students'),
+    path('manage_rooms/', views.manage_rooms, name='manage_rooms'),
+    path('manage_courses/', views.manage_courses, name='manage_courses'),
+    path('add_course/', views.add_course, name='add_course'),
+    path('edit_course/<int:course_id>/', views.edit_course, name='edit_course'),
+    path('delete_course/<int:course_id>/', views.delete_course, name='delete_course'),
+    path('add_room/', views.add_room, name='add_room'),
+    path('edit_room/<int:room_id>/', views.edit_room, name='edit_room'),
+    path('delete_room/<int:room_id>/', views.delete_room, name='delete_room'),
+    path('add_student/', views.add_student, name='add_student'),
+    path('edit_student/<int:student_id>/', views.edit_student, name='edit_student'),
+    path('delete_student/<int:student_id>/', views.delete_student, name='delete_student'),
+    path('request_permission/', views.request_permission, name='request_permission'),
+    path('manage_permissions/', views.manage_permissions, name='manage_permissions'),
+    path('approve_permission/<int:perm_id>/', views.approve_permission, name='approve_permission'),
+]

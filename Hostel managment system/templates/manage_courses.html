@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+<div class="row g-4">
+    <div class="col-lg-3">
+        <div class="dashboard-sidebar p-3">
+            <h4 class="mb-4">Admin Menu</h4>
+            <div class="list-group">
+                <a href="{% url 'admin_dashboard' %}" class="list-group-item list-group-item-action">Dashboard</a>
+                <a href="{% url 'manage_students' %}" class="list-group-item list-group-item-action">Manage Students</a>
+                <a href="{% url 'manage_rooms' %}" class="list-group-item list-group-item-action">Manage Rooms</a>
+                <a href="{% url 'manage_courses' %}" class="list-group-item list-group-item-action active">Manage Courses</a>
+                <a href="{% url 'manage_permissions' %}" class="list-group-item list-group-item-action">Manage Permissions</a>
+                <a href="{% url 'change_password' %}" class="list-group-item list-group-item-action">Change Password</a>
+                <a href="{% url 'logout' %}" class="list-group-item list-group-item-action text-danger">Logout</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-9">
+        <h2>Manage Courses</h2>
+        <a href="{% url 'add_course' %}" class="btn btn-primary mb-3">Add Course</a>
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Sno</th>
+                        <th>Course Code</th>
+                        <th>Course Name</th>
+                        <th>Reg Date</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for course in courses %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ course.course_code }}</td>
+                        <td>{{ course.course_name }}</td>
+                        <td>{{ course.reg_date }}</td>
+                        <td>
+                            <a href="{% url 'edit_course' course.id %}" class="btn btn-sm btn-warning">Edit</a>
+                            <a href="{% url 'delete_course' course.id %}" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?')">Delete</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+
+{% block title %}Student Dashboard{% endblock %}
+
+{% block content %}
+<div class="row g-4">
+    <div class="col-lg-3">
+        <div class="dashboard-sidebar p-3">
+            <h4 class="mb-4">Student Menu</h4>
+            <div class="list-group">
+                <a href="{% url 'student_dashboard' %}" class="list-group-item list-group-item-action active">Dashboard</a>
+                <a href="{% url 'my_profile' %}" class="list-group-item list-group-item-action">My Profile</a>
+                <a href="{% url 'my_room' %}" class="list-group-item list-group-item-action">My Room</a>
+                <a href="{% url 'book_hostel' %}" class="list-group-item list-group-item-action">Book Hostel</a>
+                <a href="{% url 'room_details' %}" class="list-group-item list-group-item-action">Room Details</a>
+                <a href="{% url 'change_password' %}" class="list-group-item list-group-item-action">Change Password</a>
+                <a href="{% url 'request_permission' %}" class="list-group-item list-group-item-action">Permission Request</a>
+                <a href="{% url 'logout' %}" class="list-group-item list-group-item-action text-danger">Logout</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-9">
+        <div class="row g-4">
+            <div class="col-md-6">
+                <div class="feature-card card p-4">
+                    <div class="card-body">
+                        <h5 class="card-title">Welcome, {{ student.full_name }}</h5>
+                        <p class="card-text">You can view your profile, manage room booking, request permissions, and see room details from here.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="feature-card card p-4 text-center">
+                    <h5>Assigned Room</h5>
+                    <p class="fs-4 mb-1">{% if student.room %}{{ student.room.room_no }}{% else %}Not Assigned{% endif %}</p>
+                    <p class="text-muted">{% if student.room %}{{ student.room.semester }}{% else %}Book a room now{% endif %}</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="feature-card card p-4 text-center">
+                    <h5>Course</h5>
+                    <p class="fs-4 mb-1">{{ student.course }}</p>
+                    <p class="text-muted">Duration: {{ student.duration }}</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="feature-card card p-4 text-center">
+                    <h5>Hostel Help</h5>
+                    <p class="mb-1">Parent: {{ student.parent_name }}</p>
+                    <p class="mb-1">Proctor: {{ student.proctor_name }}</p>
+                    <p>Incharge: {{ student.hostel_incharge_name }}</p>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="feature-card card p-4">
+                    <h5>My Permissions</h5>
+                    {% if permissions %}
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Reason</th>
+                                        <th>Date Out</th>
+                                        <th>Date In</th>
+                                        <th>Status</th>
+                                        <th>Remark</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for perm in permissions %}
+                                    <tr>
+                                        <td>{{ perm.reason }}</td>
+                                        <td>{{ perm.date_out }}</td>
+                                        <td>{{ perm.date_in }}</td>
+                                        <td>
+                                            <span class="badge {% if perm.status == 'approved' %}bg-success{% elif perm.status == 'pending' %}bg-warning{% else %}bg-danger{% endif %}">
+                                                {{ perm.status|capfirst }}
+                                            </span>
+                                        </td>
+                                        <td>{{ perm.remark|default:"No remark" }}</td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    {% else %}
+                        <p>No permission requests yet.</p>
+                        <p class="text-muted">Request permission from parent, proctor, and incharge when you go out.</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

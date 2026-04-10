@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+
+{% block title %}Request Permission{% endblock %}
+
+{% block content %}
+<div class="row g-4">
+    <div class="col-lg-3">
+        <div class="dashboard-sidebar p-3">
+            <h4 class="mb-4">Student Menu</h4>
+            <div class="list-group">
+                <a href="{% url 'student_dashboard' %}" class="list-group-item list-group-item-action">Dashboard</a>
+                <a href="{% url 'my_profile' %}" class="list-group-item list-group-item-action">My Profile</a>
+                <a href="{% url 'my_room' %}" class="list-group-item list-group-item-action">My Room</a>
+                <a href="{% url 'book_hostel' %}" class="list-group-item list-group-item-action">Book Hostel</a>
+                <a href="{% url 'room_details' %}" class="list-group-item list-group-item-action">Room Details</a>
+                <a href="{% url 'change_password' %}" class="list-group-item list-group-item-action">Change Password</a>
+                <a href="{% url 'request_permission' %}" class="list-group-item list-group-item-action active">Permission Request</a>
+                <a href="{% url 'logout' %}" class="list-group-item list-group-item-action text-danger">Logout</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-9">
+        <div class="card p-4">
+            <div class="card-header bg-primary text-white rounded-top">
+                <h2 class="mb-0">Request Permission</h2>
+            </div>
+            <div class="card-body">
+                <p>Please request permission if you need to go out. The request will be sent to your parent, proctor, and hostel incharge for approval.</p>
+                <form method="post">
+                    {% csrf_token %}
+                    {% if form.non_field_errors %}
+                        <div class="alert alert-danger">
+                            {% for error in form.non_field_errors %}
+                                <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                    <div class="mb-3">
+                        {{ form.reason.label_tag }}
+                        {{ form.reason }}
+                        {% if form.reason.errors %}
+                            <div class="text-danger">
+                                {% for error in form.reason.errors %}
+                                    <small>{{ error }}</small>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            {{ form.date_out.label_tag }}
+                            {{ form.date_out }}
+                            {% if form.date_out.errors %}
+                                <div class="text-danger">
+                                    {% for error in form.date_out.errors %}
+                                        <small>{{ error }}</small>
+                                {% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            {{ form.date_in.label_tag }}
+                            {{ form.date_in }}
+                            {% if form.date_in.errors %}
+                                <div class="text-danger">
+                                    {% for error in form.date_in.errors %}
+                                        <small>{{ error }}</small>
+                                {% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Send Request</button>
+                </form>
+                <div class="mt-4 alert alert-info">
+                    <strong>Note:</strong> Permission is handled by parent, proctor, and hostel incharge. Please provide full reason and date/time details.
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

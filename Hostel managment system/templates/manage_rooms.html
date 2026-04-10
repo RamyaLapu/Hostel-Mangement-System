@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+<div class="row g-4">
+    <div class="col-lg-3">
+        <div class="dashboard-sidebar p-3">
+            <h4 class="mb-4">Admin Menu</h4>
+            <div class="list-group">
+                <a href="{% url 'admin_dashboard' %}" class="list-group-item list-group-item-action">Dashboard</a>
+                <a href="{% url 'manage_students' %}" class="list-group-item list-group-item-action">Manage Students</a>
+                <a href="{% url 'manage_rooms' %}" class="list-group-item list-group-item-action active">Manage Rooms</a>
+                <a href="{% url 'manage_courses' %}" class="list-group-item list-group-item-action">Manage Courses</a>
+                <a href="{% url 'manage_permissions' %}" class="list-group-item list-group-item-action">Manage Permissions</a>
+                <a href="{% url 'change_password' %}" class="list-group-item list-group-item-action">Change Password</a>
+                <a href="{% url 'logout' %}" class="list-group-item list-group-item-action text-danger">Logout</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-9">
+        <h2>Manage Rooms</h2>
+        <a href="{% url 'add_room' %}" class="btn btn-primary mb-3">Add Room</a>
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Sno</th>
+                        <th>Room No</th>
+                        <th>Fee</th>
+                        <th>Posting Date</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for room in rooms %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ room.room_no }}</td>
+                        <td>${{ room.fee }}</td>
+                        <td>{{ room.posting_date }}</td>
+                        <td>
+                            <a href="{% url 'edit_room' room.id %}" class="btn btn-sm btn-warning">Edit</a>
+                            <a href="{% url 'delete_room' room.id %}" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?')">Delete</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

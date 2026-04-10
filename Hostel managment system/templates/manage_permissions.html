@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+<div class="row g-4">
+    <div class="col-lg-3">
+        <div class="dashboard-sidebar p-3">
+            <h4 class="mb-4">Admin Menu</h4>
+            <div class="list-group">
+                <a href="{% url 'admin_dashboard' %}" class="list-group-item list-group-item-action">Dashboard</a>
+                <a href="{% url 'manage_students' %}" class="list-group-item list-group-item-action">Manage Students</a>
+                <a href="{% url 'manage_rooms' %}" class="list-group-item list-group-item-action">Manage Rooms</a>
+                <a href="{% url 'manage_courses' %}" class="list-group-item list-group-item-action">Manage Courses</a>
+                <a href="{% url 'manage_permissions' %}" class="list-group-item list-group-item-action active">Manage Permissions</a>
+                <a href="{% url 'change_password' %}" class="list-group-item list-group-item-action">Change Password</a>
+                <a href="{% url 'logout' %}" class="list-group-item list-group-item-action text-danger">Logout</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-9">
+        <h2>Manage Permissions</h2>
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-success">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Student</th>
+                        <th>Profile</th>
+                        <th>Reason</th>
+                        <th>Date Out</th>
+                        <th>Date In</th>
+                        <th>Status</th>
+                        <th>Remark</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for perm in permissions %}
+                    <tr>
+                        <td>{{ perm.student.full_name }}</td>
+                        <td><a href="{% url 'student_profile' perm.student.id %}" class="btn btn-sm btn-info">View Profile</a></td>
+                        <td>{{ perm.reason }}</td>
+                        <td>{{ perm.date_out }}</td>
+                        <td>{{ perm.date_in }}</td>
+                        <td>
+                            <span class="badge {% if perm.status == 'approved' %}bg-success{% elif perm.status == 'pending' %}bg-warning text-dark{% else %}bg-danger{% endif %}">
+                                {{ perm.status|capfirst }}
+                            </span>
+                        </td>
+                        <td>
+                            <form method="post" style="display: inline;">
+                                {% csrf_token %}
+                                <input type="hidden" name="perm_id" value="{{ perm.id }}">
+                                <input type="text" name="remark" value="{{ perm.remark }}" class="form-control" style="width: 200px; display: inline-block;" placeholder="Enter remark">
+                                <button type="submit" class="btn btn-sm btn-primary">Save</button>
+                            </form>
+                        </td>
+                        <td>
+                            {% if perm.status == 'pending' %}
+                                <a href="{% url 'approve_permission' perm.id %}" class="btn btn-sm btn-success">Approve</a>
+                            {% else %}
+                                <span class="text-muted">No action</span>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

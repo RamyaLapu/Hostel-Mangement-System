@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center login-page bg-login align-items-center">
+    <div class="col-md-5">
+        <div class="card p-4 shadow-lg">
+            <div class="card-body">
+                <h2 class="card-title text-center mb-4">Login</h2>
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="alert alert-danger">{{ message }}</div>
+                    {% endfor %}
+                {% endif %}
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label class="form-label">Login As</label>
+                        <div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="login_role" id="roleStudent" value="student" checked>
+                                <label class="form-check-label" for="roleStudent">Student</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="login_role" id="roleAdmin" value="admin">
+                                <label class="form-check-label" for="roleAdmin">Admin</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="username" class="form-label">Username</label>
+                        <input type="text" name="username" class="form-control" id="username" placeholder="Enter username" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" name="password" class="form-control" id="password" placeholder="Enter password" required>
+                    </div>
+                    <div class="d-grid gap-2">
+                        <button type="submit" class="btn btn-primary">Login</button>
+                    </div>
+                </form>
+                <div class="text-center mt-3">
+                    <p id="registerLink" class="mb-1"><a href="{% url 'register' %}">Don't have an account? Register</a></p>
+                    <p class="mb-1"><a href="{% url 'forgot_password' %}">Forgot Password?</a></p>
+                    <p class="mb-0"><a href="{% url 'home' %}">Back to Home</a></p>
+                </div>
+                <script>
+                    document.addEventListener('DOMContentLoaded', function() {
+                        const studentRadio = document.getElementById('roleStudent');
+                        const adminRadio = document.getElementById('roleAdmin');
+                        const registerLink = document.getElementById('registerLink');
+
+                        function updateLinks() {
+                            if (adminRadio.checked) {
+                                registerLink.style.display = 'none';
+                            } else {
+                                registerLink.style.display = 'block';
+                            }
+                        }
+
+                        studentRadio.addEventListener('change', updateLinks);
+                        adminRadio.addEventListener('change', updateLinks);
+                        updateLinks();
+                    });
+                </script>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

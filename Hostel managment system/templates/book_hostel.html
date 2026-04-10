@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+<div class="row g-4">
+    <div class="col-lg-3">
+        <div class="dashboard-sidebar p-3">
+            <h4 class="mb-4">Student Menu</h4>
+            <div class="list-group">
+                <a href="{% url 'student_dashboard' %}" class="list-group-item list-group-item-action">Dashboard</a>
+                <a href="{% url 'my_profile' %}" class="list-group-item list-group-item-action">My Profile</a>
+                <a href="{% url 'my_room' %}" class="list-group-item list-group-item-action">My Room</a>
+                <a href="{% url 'book_hostel' %}" class="list-group-item list-group-item-action active">Book Hostel</a>
+                <a href="{% url 'room_details' %}" class="list-group-item list-group-item-action">Room Details</a>
+                <a href="{% url 'change_password' %}" class="list-group-item list-group-item-action">Change Password</a>
+                <a href="{% url 'request_permission' %}" class="list-group-item list-group-item-action">Permission Request</a>
+                <a href="{% url 'logout' %}" class="list-group-item list-group-item-action text-danger">Logout</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-9">
+        <div class="card">
+            <div class="card-header">
+                <h2 class="mb-0">Book Hostel</h2>
+            </div>
+            <div class="card-body">
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="room" class="form-label">Select Room</label>
+                        <select name="room" class="form-control" id="room" required>
+                            {% for room in rooms %}
+                            <option value="{{ room.id }}">{{ room.room_no }} - {{ room.semester }} - ${{ room.fee }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Book Room</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

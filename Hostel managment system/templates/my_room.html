@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+<div class="row g-4">
+    <div class="col-lg-3">
+        <div class="dashboard-sidebar p-3">
+            <h4 class="mb-4">Student Menu</h4>
+            <div class="list-group">
+                <a href="{% url 'student_dashboard' %}" class="list-group-item list-group-item-action">Dashboard</a>
+                <a href="{% url 'my_profile' %}" class="list-group-item list-group-item-action">My Profile</a>
+                <a href="{% url 'my_room' %}" class="list-group-item list-group-item-action active">My Room</a>
+                <a href="{% url 'book_hostel' %}" class="list-group-item list-group-item-action">Book Hostel</a>
+                <a href="{% url 'room_details' %}" class="list-group-item list-group-item-action">Room Details</a>
+                <a href="{% url 'change_password' %}" class="list-group-item list-group-item-action">Change Password</a>
+                <a href="{% url 'request_permission' %}" class="list-group-item list-group-item-action">Permission Request</a>
+                <a href="{% url 'logout' %}" class="list-group-item list-group-item-action text-danger">Logout</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-9">
+        <div class="row">
+            <div class="col-md-12">
+                <h2>My Room</h2>
+                {% if student.room %}
+                <div class="card">
+                    <div class="card-body">
+                        <p><strong>Room No:</strong> {{ student.room.room_no }}</p>
+                        <p><strong>Semester:</strong> {{ student.room.semester }}</p>
+                        <p><strong>Fee:</strong> ${{ student.room.fee }}</p>
+                        <p><strong>Posting Date:</strong> {{ student.room.posting_date }}</p>
+                    </div>
+                </div>
+                {% else %}
+                <div class="alert alert-warning">
+                    No room assigned yet. Please book a room.
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

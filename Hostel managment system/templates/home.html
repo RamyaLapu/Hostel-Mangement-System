@@ -1,0 +1,236 @@
+{% extends 'base.html' %}
+
+{% block title %}Hostel Premium - Student Housing | Book Your Room Today{% endblock %}
+
+{% block content %}
+
+<!-- HERO SECTION -->
+<div class="page-header text-white">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-6">
+                <h1 class="display-5">Premium Student Hostel</h1>
+                <p class="lead">Experience comfort meets convenience with our world-class hostel facilities, secure environment, and professional management.</p>
+                <div>
+                    <a href="{% url 'register' %}" class="btn btn-light btn-lg me-2">🚀 Register Now</a>
+                    <a href="{% url 'login' %}" class="btn btn-outline-light btn-lg">📖 Student Login</a>
+                </div>
+            </div>
+            <div class="col-md-6 text-center">
+                <img src="https://5.imimg.com/data5/SELLER/Default/2023/5/306562348/BG/CK/SY/114626164/colleges-and-hostels-construction-service.png" class="img-fluid rounded" alt="Premium Hostel">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- KEY FEATURES / BENEFITS SECTION -->
+<div class="container mb-5">
+    <div class="text-center mb-5">
+        <h2 style="color: var(--primary); font-weight: 700; font-size: 36px;">Why Choose Hostel Premium?</h2>
+        <p style="color: #666; font-size: 16px; max-width: 600px; margin: 0 auto;">We offer comprehensive hostel management with world-class amenities and exceptional student care</p>
+    </div>
+
+    <div class="row g-4">
+        <div class="col-md-4 mb-3">
+            <div class="feature-card card p-4">
+                <div style="font-size: 48px; margin-bottom: 15px;">🏢</div>
+                <h5>Modern Facilities</h5>
+                <p style="color: #666; font-size: 14px;">State-of-the-art rooms with high-speed WiFi, comfortable bedding, and climate control in every room.</p>
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <div class="feature-card card p-4">
+                <div style="font-size: 48px; margin-bottom: 15px;">🔒</div>
+                <h5>Secure & Safe</h5>
+                <p style="color: #666; font-size: 14px;">24/7 security monitoring, access control system, emergency response team, and security cameras throughout.</p>
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <div class="feature-card card p-4">
+                <div style="font-size: 48px; margin-bottom: 15px;">👥</div>
+                <h5>Community Living</h5>
+                <p style="color: #666; font-size: 14px;">Connect with diverse students, organize study groups, social events, and build lifelong friendships.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- HOSTEL AMENITIES SECTION -->
+<div class="container mb-5">
+    <div class="row">
+        <div class="col-lg-3 mb-4">
+            <div class="bg-white p-4 rounded-3 h-100" style="box-shadow: var(--card-shadow);">
+                <h4 style="color: var(--primary); font-weight: 700; margin-bottom: 20px;">Hostel Rules</h4>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">✓ Keep your room clean and quiet</li>
+                    <li class="list-group-item">✓ No visitors after 8 PM</li>
+                    <li class="list-group-item">✓ Use electricity responsibly</li>
+                    <li class="list-group-item">✓ Follow hostel timings strictly</li>
+                    <li class="list-group-item">✓ Respect other residents' privacy</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="col-lg-9">
+            <div class="row g-4">
+                <!-- BEDROOM -->
+                <div class="col-md-6 mb-3">
+                    <div class="feature-card card overflow-hidden h-100">
+                        <img src="https://cms.medical.iqcity.in/wp-content/uploads/2025/04/GIRLS-NEW-HOSTEL-18-1-scaled.jpg" class="dashboard-image" alt="Bedroom area" style="height: 240px;">
+                        <div class="p-4">
+                            <h5 style="color: var(--primary); font-weight: 700;">🛏️ Spacious Bedrooms</h5>
+                            <p style="font-size: 14px; color: #666;">Comfortable single and double occupancy rooms with modern furniture, adequate storage, and natural lighting.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- KITCHEN -->
+                <div class="col-md-6 mb-3">
+                    <div class="feature-card card overflow-hidden h-100">
+                        <img src="https://5.imimg.com/data5/SELLER/Default/2025/12/572004518/PX/UC/ZP/126472830/kitchen-500x500.png" class="dashboard-image" alt="Kitchen area" style="height: 240px;">
+                        <div class="p-4">
+                            <h5 style="color: var(--primary); font-weight: 700;">🍳 Equipped Kitchen</h5>
+                            <p style="font-size: 14px; color: #666;">Fully equipped kitchen with modern appliances, cookware, and dining area for convenience of all residents.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- BATHROOM -->
+                <div class="col-md-6 mb-3">
+                    <div class="feature-card card overflow-hidden h-100">
+                        <img src="https://envoplan.co.uk/wp-content/uploads/2021/06/HDRSt-Albans-School-040.jpg" class="dashboard-image" alt="Bathroom area" style="height: 240px;">
+                        <div class="p-4">
+                            <h5 style="color: var(--primary); font-weight: 700;">🚿 Modern Bathrooms</h5>
+                            <p style="font-size: 14px; color: #666;">Hygienic bathrooms with hot water supply, premium toiletries, and regular maintenance by our dedicated staff.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- DINING -->
+                <div class="col-md-6 mb-3">
+                    <div class="feature-card card overflow-hidden h-100">
+                        <img src="https://cplteam.com/wp-content/uploads/2023/03/15362_00_Estes_Dining_Hall_Renovation_N2_medium.jpg" class="dashboard-image" alt="Dining area" style="height: 240px;">
+                        <div class="p-4">
+                            <h5 style="color: var(--primary); font-weight: 700;">🍽️ Dining Area</h5>
+                            <p style="font-size: 14px; color: #666;">Spacious dining facility with nutritious meals prepared by experienced chefs for all residents.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ADDITIONAL FACILITIES SECTION -->
+<div style="background: linear-gradient(135deg, rgba(26, 77, 122, 0.05), rgba(45, 127, 184, 0.05)); padding: 50px 0; margin: 50px 0; border-radius: 20px;">
+    <div class="container">
+        <h2 style="text-align: center; color: var(--primary); font-weight: 700; margin-bottom: 40px;">Additional Facilities</h2>
+        
+        <div class="row g-4 text-center">
+            <div class="col-md-3 col-sm-6 mb-3">
+                <div style="font-size: 40px; margin-bottom: 15px;">📚</div>
+                <h6 style="color: var(--primary); font-weight: 700;">Study Rooms</h6>
+                <p style="font-size: 13px; color: #666;">Quiet study spaces with proper lighting and resources</p>
+            </div>
+            <div class="col-md-3 col-sm-6 mb-3">
+                <div style="font-size: 40px; margin-bottom: 15px;">🏋️</div>
+                <h6 style="color: var(--primary); font-weight: 700;">Gym Equipment</h6>
+                <p style="font-size: 13px; color: #666;">Equipped gym for fitness and wellness activities</p>
+            </div>
+            <div class="col-md-3 col-sm-6 mb-3">
+                <div style="font-size: 40px; margin-bottom: 15px;">⚽</div>
+                <h6 style="color: var(--primary); font-weight: 700;">Recreation</h6>
+                <p style="font-size: 13px; color: #666;">Sports facilities and recreation area for students</p>
+            </div>
+            <div class="col-md-3 col-sm-6 mb-3">
+                <div style="font-size: 40px; margin-bottom: 15px;">🌐</div>
+                <h6 style="color: var(--primary); font-weight: 700;">WiFi & Internet</h6>
+                <p style="font-size: 13px; color: #666;">High-speed internet in all rooms and common areas</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- PRICING / BOOKING SECTION -->
+<div class="container mb-5">
+    <div class="text-center mb-5">
+        <h2 style="color: var(--primary); font-weight: 700; font-size: 36px;">Simple & Transparent Pricing</h2>
+        <p style="color: #666; font-size: 16px;">Flexible room options to suit your budget and preferences</p>
+    </div>
+
+    <div class="row g-4">
+        <div class="col-md-4">
+            <div class="feature-card card text-center p-4">
+                <div style="font-size: 36px; margin-bottom: 15px;">🛏️</div>
+                <h5>Single Room</h5>
+                <p style="font-size: 28px; color: var(--accent); font-weight: 700; margin: 15px 0;">5000/-<span style="font-size: 14px; color: #666;">/month</span></p>
+                <p style="font-size: 13px; color: #666; margin-bottom: 20px;">Personal space with private bathroom and WiFi</p>
+                <a href="{% url 'register' %}" class="btn btn-primary">Book Now</a>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="feature-card card text-center p-4" style="border: 2px solid var(--accent);">
+                <div style="background: var(--accent); color: white; padding: 8px 15px; border-radius: 8px; display: inline-block; font-size: 12px; font-weight: 700; margin-bottom: 10px;">⭐ POPULAR</div>
+                <div style="font-size: 36px; margin-bottom: 15px;">🏠</div>
+                <h5>Double Room</h5>
+                <p style="font-size: 28px; color: var(--accent); font-weight: 700; margin: 15px 0;">4500/-<span style="font-size: 14px; color: #666;">/month</span></p>
+                <p style="font-size: 13px; color: #666; margin-bottom: 20px;">Shared room with roommate, full amenities included</p>
+                <a href="{% url 'register' %}" class="btn btn-primary">Book Now</a>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="feature-card card text-center p-4">
+                <div style="font-size: 36px; margin-bottom: 15px;">👨‍👩‍👧‍👦</div>
+                <h5>Shared Dormitory</h5>
+                <p style="font-size: 28px; color: var(--accent); font-weight: 700; margin: 15px 0;">4000/-<span style="font-size: 14px; color: #666;">/month</span></p>
+                <p style="font-size: 13px; color: #666; margin-bottom: 20px;">Budget-friendly, 4-bed shared room with common areas</p>
+                <a href="{% url 'register' %}" class="btn btn-primary">Book Now</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- TESTIMONIALS SECTION -->
+<div style="background: linear-gradient(135deg, var(--primary), var(--secondary)); color: white; padding: 50px 0; margin: 50px 0; border-radius: 20px;">
+    <div class="container">
+        <h2 style="text-align: center; font-weight: 700; margin-bottom: 40px;">What Our Students Say</h2>
+        
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="bg-white text-dark p-4 rounded-3" style="box-shadow: var(--card-shadow);">
+                    <div style="color: var(--accent); font-size: 18px; margin-bottom: 10px;">⭐⭐⭐⭐⭐</div>
+                    <p style="font-size: 14px; margin-bottom: 15px; color: #555; font-style: italic;">"Best hostel experience! Great facilities and friendly management. Highly recommended!"</p>
+                    <p style="font-weight: 700; color: var(--primary); margin: 0;">- Soumya Ranjan</p>
+                    <p style="font-size: 12px; color: #999; margin: 0;">Engineering Student</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="bg-white text-dark p-4 rounded-3" style="box-shadow: var(--card-shadow);">
+                    <div style="color: var(--accent); font-size: 18px; margin-bottom: 10px;">⭐⭐⭐⭐⭐</div>
+                    <p style="font-size: 14px; margin-bottom: 15px; color: #555; font-style: italic;">"I felt safe, comfortable, and at home. The staff is amazing and always helpful!"</p>
+                    <p style="font-weight: 700; color: var(--primary); margin: 0;">- Priya Sharma</p>
+                    <p style="font-size: 12px; color: #999; margin: 0;">Medical Student</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="bg-white text-dark p-4 rounded-3" style="box-shadow: var(--card-shadow);">
+                    <div style="color: var(--accent); font-size: 18px; margin-bottom: 10px;">⭐⭐⭐⭐⭐</div>
+                    <p style="font-size: 14px; margin-bottom: 15px; color: #555; font-style: italic;">"Perfect location, excellent amenities, and value for money. Worth every penny!"</p>
+                    <p style="font-weight: 700; color: var(--primary); margin: 0;">- Mahi</p>
+                    <p style="font-size: 12px; color: #999; margin: 0;">Commerce Student</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- CALL-TO-ACTION SECTION -->
+<div class="container my-5">
+    <div class="rounded-4 p-5" style="background: linear-gradient(135deg, rgba(58, 165, 217, 0.1), rgba(45, 127, 184, 0.1)); border: 2px solid var(--accent); text-align: center;">
+        <h3 style="color: var(--primary); font-weight: 700; margin-bottom: 15px;">Ready to Join Hostel Premium?</h3>
+        <p style="color: #666; font-size: 16px; margin-bottom: 25px;">Don't miss out on our 10% limited-time offer for First Ten students!</p>
+        <a href="{% url 'register' %}" class="btn btn-primary btn-lg">🚀 Register Today & Get 10% Off</a>
+    </div>
+</div>
+
+{% endblock %}

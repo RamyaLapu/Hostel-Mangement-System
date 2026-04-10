@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <h2 class="mb-0">Add Room</h2>
+            </div>
+            <div class="card-body">
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label class="form-label">Room Number</label>
+                        {{ form.room_no }}
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Fee</label>
+                        {{ form.fee }}
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Student</label>
+                        {{ form.student }}
+                    </div>
+                    <button type="submit" class="btn btn-primary">Add</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

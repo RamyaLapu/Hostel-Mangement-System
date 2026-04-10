@@ -1,0 +1,113 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header">
+                <h2 class="mb-0">Edit Student</h2>
+            </div>
+            <div class="card-body">
+                <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col-md-6">
+                            {{ form.username.label_tag }}
+                            {{ form.username }}
+                        </div>
+                        <div class="col-md-6">
+                            {{ form.password.label_tag }}
+                            {{ form.password }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            {{ form.email.label_tag }}
+                            {{ form.email }}
+                        </div>
+                        <div class="col-md-6">
+                            {{ form.regno.label_tag }}
+                            {{ form.regno }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            {{ form.full_name.label_tag }}
+                            {{ form.full_name }}
+                        </div>
+                        <div class="col-md-6">
+                            {{ form.last_name.label_tag }}
+                            {{ form.last_name }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            {{ form.date_of_birth.label_tag }}
+                            {{ form.date_of_birth }}
+                        </div>
+                        <div class="col-md-6">
+                            {{ form.course.label_tag }}
+                            {{ form.course }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            {{ form.duration.label_tag }}
+                            {{ form.duration }}
+                        </div>
+                        <div class="col-md-6">
+                            {{ form.food.label_tag }}
+                            {{ form.food }}
+                        </div>
+                    </div>
+                    {{ form.personal_details.label_tag }}
+                    {{ form.personal_details }}
+                    <br>
+                    {{ form.image.label_tag }}
+                    {{ form.image }}
+                    <br>
+                    <h4>Parent Details</h4>
+                    <div class="row">
+                        <div class="col-md-6">
+                            {{ form.parent_name.label_tag }}
+                            {{ form.parent_name }}
+                        </div>
+                        <div class="col-md-6">
+                            {{ form.parent_contact.label_tag }}
+                            {{ form.parent_contact }}
+                        </div>
+                    </div>
+                    {{ form.parent_email.label_tag }}
+                    {{ form.parent_email }}
+                    <br>
+                    <h4>Proctor Details</h4>
+                    <div class="row">
+                        <div class="col-md-6">
+                            {{ form.proctor_name.label_tag }}
+                            {{ form.proctor_name }}
+                        </div>
+                        <div class="col-md-6">
+                            {{ form.proctor_contact.label_tag }}
+                            {{ form.proctor_contact }}
+                        </div>
+                    </div>
+                    <h4>Hostel Incharge Details</h4>
+                    <div class="row">
+                        <div class="col-md-6">
+                            {{ form.hostel_incharge_name.label_tag }}
+                            {{ form.hostel_incharge_name }}
+                        </div>
+                        <div class="col-md-6">
+                            {{ form.hostel_incharge_contact.label_tag }}
+                            {{ form.hostel_incharge_contact }}
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary mt-3">Update</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
